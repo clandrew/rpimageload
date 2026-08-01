@@ -53,7 +53,7 @@ ColorConversion.exe test_image_1.png test_image_1.data.h
 ColorConversion.exe test_image_2.png test_image_2.data.h
 ColorConversion.exe test_image_3.png test_image_3.data.h
 ```
-The images are all a quarter screen size. The demo does a 4x scaled blit to make them fullscreen.
+The images are all a quarter screen size. The demo does a 4x scaled blit to make them fullscreen. The color invert happens during the blit, if enabled. You can find this in the function Scaled4xBlit().
 
 # Build
 The actual democode is all in one file, rpimageload.ino.
