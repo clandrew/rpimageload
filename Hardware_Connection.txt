@@ -1,0 +1,16 @@
+The following are the connections from the WaveShare LCD 1.69inch module to the Raspberry Pi Pico 2W.
+The listed wire colors are the colors on my particular cabling unit, for illustrative purposes only. They may be different on your unit.
+
+WaveShare LCD	Raspberry Pi Pico 2W
+-------------	--------------------------
+VCC	(purple)  |	3v3				Pin 39
+GND (white)	  |	GND				Pin 38
+DIN (green)	  |	GP19, SPI0 TX		        Pin 25
+CLK (orange)      |	GP18, SPI0 SCK		        Pin 24
+CS (yellow)	  |	GP17, SPI0 CSn		        Pin 22
+DC (blue)	  |	GP22				Pin 29
+RST (brown)       |	GP13				Pin 17	(also SPI1CSn)
+BL (gray)	  |	GPU21				Pin 27
+
+Button (red)      |     GP14                            Pin 19
+Button (black)    |     GND                             Pin 18
