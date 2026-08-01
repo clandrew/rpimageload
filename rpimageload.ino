@@ -2,6 +2,7 @@
 #include "LCD_1in69.h"
 #include "test_image_1.data.h"
 #include "test_image_2.data.h"
+#include "test_image_3.data.h"
 
 #define BUTTON1_PIN 14
 
@@ -11,6 +12,8 @@ UWORD gMiniStaging[LCD_QTR_WIDTH * LCD_QTR_HEIGHT]; // 1/4 size. To be scaled up
 UWORD gStaging[LCD_1IN69_WIDTH * LCD_1IN69_HEIGHT ];
 int gImageIndex=0;
 bool gButtonPress=false;
+bool gInvert = false;
+int ganimationCounter=0;
 
 void InitializeButton(uint gpio)
 {
@@ -41,6 +44,12 @@ void Scaled4xBlit()
     for (int xSrc=0; xSrc<LCD_QTR_WIDTH; ++xSrc)
     {
       unsigned short px = pSrcRow[xSrc];
+
+      if (gInvert)
+      {
+        px = ~px;
+      }
+
       *pDstPx = px;
       pDstPx++;
       *pDstPx = px;
@@ -78,6 +87,10 @@ void DrawToStaging()
     {
       pSrc = test_image_2_data;
     }
+    else if (gImageIndex == 2)
+    {
+      pSrc = test_image_3_data;
+    }
     unsigned short* pDst = gMiniStaging;
     size_t copySize = test_image_1_width * test_image_1_height * 2;    
     memcpy(pDst, pSrc, copySize);
@@ -94,9 +107,14 @@ void CopyStagingToScreen()
   DEV_SPI_Write_nByte((uint8_t*)&gStaging, LCD_1IN69_WIDTH * LCD_1IN69_HEIGHT * 2);
 }
 
-void IncrementImageIndex()
+void AdvanceAnimation()
 {
-  gImageIndex = (gImageIndex+1) % 2;
+  ganimationCounter++;
+  if (ganimationCounter > 3)
+  {
+    gImageIndex = (gImageIndex+1) % 3;
+    ganimationCounter = 0;
+  }
 }
 
 // the loop function runs over and over again forever
@@ -104,13 +122,15 @@ void loop()
 {
   DrawToStaging();
   CopyStagingToScreen();
+  AdvanceAnimation();
 
   bool buttonPress = !gpio_get(BUTTON1_PIN);
   if (gButtonPress == false && buttonPress == true)
   {
-      IncrementImageIndex();
+    gInvert = !gInvert;
   }  
   gButtonPress = buttonPress;
+
   
   delay(50); // Wait this number of ms
 }
