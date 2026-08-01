@@ -15,6 +15,10 @@ Photo of the screen:
 
 <img src="https://raw.githubusercontent.com/clandrew/rpimageload/main/Demo/Screen.png" />
 
+Video of the screen:
+
+<img src="https://raw.githubusercontent.com/clandrew/rpimageload/main/Demo/Video.gif" />
+
 # Setup
 Use the following connections:
 
