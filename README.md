@@ -15,7 +15,7 @@ Photo of the screen:
 
 <img src="https://raw.githubusercontent.com/clandrew/rpimageload/main/Demo/Screen.png" />
 
-Video of the screen:
+Video, when the button pressed to toggle the color invert effect:
 
 <img src="https://raw.githubusercontent.com/clandrew/rpimageload/main/Demo/Video.gif" />
 
