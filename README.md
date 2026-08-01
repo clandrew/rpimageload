@@ -40,7 +40,7 @@ The display uses SPI interface. You can set it up differently from how it's list
 Press the button to invert the colors of the image. Pressing the button again will return them to normal.
 
 # How it works
-The demo loads pre-formatted image data, hardcoded in a file. The image is set up to be a quarter screen size. Then it does a 4x scaled blit to video memory.
+The demo loads pre-formatted image data, hardcoded in a file.
 
 As for the pre-formatted image data, I made a tool called ColorConversion that takes an input image file (e.g., a PNG file) and converts it to the R5G6B5-with-flipped-endianness that the platform expects. The included demo images were set up using the tool with these command lines
 
