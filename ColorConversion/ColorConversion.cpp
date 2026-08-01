@@ -106,7 +106,7 @@ int main(int argc, char** argv)
     }
 
     // Convert the image format to 32bppPBGRA, equiv to DXGI_FORMAT_B8G8R8A8_UNORM
-    // WIC doesn't support any 16bit formats so we will manually convert.
+    // WIC doesn't support this kind of 16bit RGB format so we will manually convert.
 
     ComPtr<IWICFormatConverter> spConverter;
     if (FAILED(wicImagingFactory->CreateFormatConverter(&spConverter)))
