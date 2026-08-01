@@ -33,7 +33,6 @@ void setup()
 
 void Scaled4xBlit()
 {
-  // Now do a scaled blit
   size_t rowSize = LCD_1IN69_WIDTH * 2;
   unsigned short* pSrcRow = gMiniStaging;
   unsigned short* pDstRow = gStaging;
